@@ -17,10 +17,14 @@ st.warning("As matérias que você selecionar devem estar no banco vetorial (Pin
 
 user_input = st.text_area("Cole as URLs aqui (uma por linha)", height=150)
 example_urls = """
-    https://oglobo.globo.com/politica/noticia/2024/12/07/lula-parabeniza-janja-apos-homenagem-em-sp-reconhecida-por-seu-trabalho-e-incansavel-empenho.ghtml
-    https://oglobo.globo.com/ela/gente/noticia/2024/12/07/ana-hickmann-afirma-que-descobriu-nova-divida-milionaria-contraida-em-seu-nome-pelo-ex-marido.ghtml
-    https://oglobo.globo.com/esportes/noticia/2024/12/07/atacante-do-west-ham-sofre-grave-acidente-de-carro-na-inglaterra-estado-de-saude-e-estavel.ghtml
-    https://oglobo.globo.com/brasil/noticia/2024/12/07/homem-e-preso-suspeito-de-matar-esposa-para-receber-seguro-de-vida-de-r-1-milhao-em-minas-gerais.ghtml
+    https://oglobo.globo.com/politica/noticia/2025/04/09/glauber-braga-promete-greve-de-fome-em-meio-a-votacao-pela-sua-cassacao.ghtml
+    https://oglobo.globo.com/economia/noticia/2025/04/09/governo-tem-expectativa-de-que-preco-do-ovo-va-cair-apos-a-pascoa-diz-ministro-da-agricultura.ghtml
+    https://oglobo.globo.com/cultura/noticia/2025/04/09/enquete-bbb-25-participante-aparece-com-51percent-dos-votos-para-sair-do-programa-veja-a-parcial-atualizada.ghtml
+    https://oglobo.globo.com/economia/negocios/noticia/2025/04/09/rentabilidade-do-cdb-do-master-se-manteve-descolado-do-mercado-este-ano-mostra-levantamento.ghtml
+    https://oglobo.globo.com/brasil/noticia/2025/04/09/movimento-led-chega-ao-publico-universitario-e-cria-edital-para-estudantes-de-jornalismo.ghtml
+    https://oglobo.globo.com/saude/noticia/2025/04/09/o-caso-de-cinco-enfermeiras-do-mesmo-hospital-que-foram-diagnosticadas-com-tumores-cerebrais-nos-estados-unidos.ghtml
+    https://oglobo.globo.com/economia/noticia/2025/04/09/tcu-amplia-apuracao-sobre-contas-da-previ-e-envia-dados-para-policia-federal-e-ministerio-publico.ghtml
+    https://oglobo.globo.com/esportes/futebol/vasco/noticia/2025/04/09/atacante-do-vasco-e-artilheiro-da-sul-americana-vegetti-sera-pai-pela-segunda-vez.ghtm
 """
 st.info(f"Exemplo de utilização (estas estão no banco vetorial): \n {example_urls}")
 

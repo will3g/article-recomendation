@@ -71,7 +71,7 @@ def scrape_article_content(article_url):
 
 # exemplo de url: https://oglobo.globo.com/sitemap/oglobo/2024/12/07_1.xml
 base_url = "https://oglobo.globo.com/sitemap/oglobo"
-start_date = datetime(2024, 12, 7)
+start_date = datetime(2025, 4, 8)
 days_to_scrape = 7
 
 sitemap_urls = generate_sitemap_urls(base_url, start_date, days_to_scrape)

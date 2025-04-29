@@ -17,7 +17,7 @@ index = _pinecone.Index(os.getenv("INDEX_NAME"))
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 LAMBDA_FACTOR = 0.01
-INITIAL_DATE_LIMIT = 14
+INITIAL_DATE_LIMIT = 1
 MAX_DATE_LIMIT = 30
 
 def extract_categories_from_source(source_url):
@@ -173,6 +173,7 @@ def get_recommendations(user_urls):
             "other_articles_embeddings": np.array(other_articles_embeddings) if other_articles_embeddings else np.array([])
         }
 
+
     cluster_size = min(len(cluster) for cluster in cluster_results if len(cluster) > 0) if cluster_results else 0
     balanced_results = []
     if cluster_size > 0:
@@ -181,6 +182,7 @@ def get_recommendations(user_urls):
                 if i < len(cluster):
                     balanced_results.append(cluster[i])
     balanced_results = filter_already_read_articles(balanced_results, user_history_urls)
+    print('aaa: ', balanced_results)
 
     adjusted_results = []
     category_counter = defaultdict(int)
@@ -225,11 +227,14 @@ def get_recommendations(user_urls):
 
 if __name__ == "__main__":
     user_urls = [
-        "https://oglobo.globo.com/rio/noticia/2024/12/07/primaverao-com-mais-de-41oc-rio-tem-terceiro-dia-mais-quente-do-ano-veja-a-previsao.ghtml",
-        "https://oglobo.globo.com/politica/noticia/2024/12/07/lula-parabeniza-janja-apos-homenagem-em-sp-reconhecida-por-seu-trabalho-e-incansavel-empenho.ghtml",
-        "https://oglobo.globo.com/ela/gente/noticia/2024/12/07/ana-hickmann-afirma-que-descobriu-nova-divida-milionaria-contraida-em-seu-nome-pelo-ex-marido.ghtml",
-        "https://oglobo.globo.com/esportes/noticia/2024/12/07/atacante-do-west-ham-sofre-grave-acidente-de-carro-na-inglaterra-estado-de-saude-e-estavel.ghtml",
-        "https://oglobo.globo.com/brasil/noticia/2024/12/07/homem-e-preso-suspeito-de-matar-esposa-para-receber-seguro-de-vida-de-r-1-milhao-em-minas-gerais.ghtml"
+        "https://oglobo.globo.com/politica/noticia/2025/04/09/glauber-braga-promete-greve-de-fome-em-meio-a-votacao-pela-sua-cassacao.ghtml",
+        "https://oglobo.globo.com/economia/noticia/2025/04/09/governo-tem-expectativa-de-que-preco-do-ovo-va-cair-apos-a-pascoa-diz-ministro-da-agricultura.ghtml",
+        "https://oglobo.globo.com/cultura/noticia/2025/04/09/enquete-bbb-25-participante-aparece-com-51percent-dos-votos-para-sair-do-programa-veja-a-parcial-atualizada.ghtml",
+        "https://oglobo.globo.com/economia/negocios/noticia/2025/04/09/rentabilidade-do-cdb-do-master-se-manteve-descolado-do-mercado-este-ano-mostra-levantamento.ghtml",
+        "https://oglobo.globo.com/brasil/noticia/2025/04/09/movimento-led-chega-ao-publico-universitario-e-cria-edital-para-estudantes-de-jornalismo.ghtml",
+        "https://oglobo.globo.com/saude/noticia/2025/04/09/o-caso-de-cinco-enfermeiras-do-mesmo-hospital-que-foram-diagnosticadas-com-tumores-cerebrais-nos-estados-unidos.ghtml",
+        "https://oglobo.globo.com/economia/noticia/2025/04/09/tcu-amplia-apuracao-sobre-contas-da-previ-e-envia-dados-para-policia-federal-e-ministerio-publico.ghtml",
+        "https://oglobo.globo.com/esportes/futebol/vasco/noticia/2025/04/09/atacante-do-vasco-e-artilheiro-da-sul-americana-vegetti-sera-pai-pela-segunda-vez.ghtml"
     ]
     recommendations, categories, embeddings = get_recommendations(user_urls)
     print('-' * 50)
